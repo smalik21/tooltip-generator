@@ -1,0 +1,59 @@
+.RadioButton {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 100%;
+    margin: 0.2rem 0 -0.2rem;
+  }
+  
+  .RadioButtonLabel {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+  }
+  
+  .RadioButtonInput {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .RadioButtonCustom {
+    position: absolute;
+    left: 0;
+    height: 12px;
+    width: 12px;
+    background-color: white; 
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.244);
+  }
+  
+  .RadioButtonInput:checked ~ .RadioButtonCustom {
+    background-color: #007bff; 
+  }
+
+  .RadioButtonInput[value="Top"] ~ .RadioButtonCustom:after {
+    width: 7px;
+  }
+  .RadioButtonInput[value="Bottom"] ~ .RadioButtonCustom:after {
+    width: 7px;
+  }
+  
+  .RadioButtonCustom:after {
+    content: '';
+    position: absolute;
+    display: none;
+    top: 2.5px;
+    left: 2.5px;
+    width: 7.5px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: white;
+  }
+  
+  .RadioButtonInput:checked ~ .RadioButtonCustom:after {
+    display: block;
+  }
+  

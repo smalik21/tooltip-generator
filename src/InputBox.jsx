@@ -1,6 +1,6 @@
 import './InputBox.css'
 
-const InputBox = ({name, label, placeholder, value, onChange}) => {
+const InputBox = ({name, label, sub, placeholder, value, size, onChange}) => {
 
     const handleChange = (event) => {
         event.preventDefault()
@@ -10,8 +10,8 @@ const InputBox = ({name, label, placeholder, value, onChange}) => {
     }
 
     return (
-        <div className='input-box'>
-            <label>{label}</label>
+        <div className={`input-box ${size}`}>
+            <label>{label} <span>{sub}</span></label>
             <input 
                 type='text' 
                 name={name}

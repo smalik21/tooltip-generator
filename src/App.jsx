@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import DropdownMenu from './DropdownMenu'
+import RadioButton from './RadioButton'
 import InputBox from './InputBox'
 import Display from './Display'
+
 
 function App() {
 
@@ -10,18 +12,18 @@ function App() {
     targetElement: 'Button3',
     position: 'Bottom',
     text: 'Tooltip text goes here',
-    textSize: '10',
-    padding: '0',
-    color: '#333',
-    backgroundColor: '#f0f0f0',
-    borderRadius: '3',
-    tooltipWidth: '3',
+    textSize: '14',
+    padding: '2',
+    color: '#fff',
+    backgroundColor: '#000',
+    borderRadius: '5',
+    tooltipWidth: '9',
     tooltipHeight: '2',
-    arrowWidth: '3',
-    arrowHeight: '3',
+    arrowWidth: '5',
+    arrowHeight: '5',
     image: null,
-    imageWidth: '50',
-    imageHeight: '50',
+    imageWidth: '30',
+    imageHeight: '20',
     imageBorderRadius: '4'
   })
 
@@ -29,7 +31,6 @@ function App() {
   const [loadedFromLocalStorage, setLoadedFromLocalStorage] = useState(false);
 
   useEffect(() => {
-    // Retrieve tooltip data from local storage when the app loads
     const storedTooltipData = localStorage.getItem('tooltipData');
     if (storedTooltipData) {
       try {
@@ -40,11 +41,10 @@ function App() {
         console.error("Error parsing stored data:", error);
       }
     }
-    setLoading(false); // Mark data loading as complete
+    setLoading(false); 
   }, []);
 
   useEffect(() => {
-    // Store tooltip data in local storage whenever tooltipData changes
     if (loadedFromLocalStorage) {
       localStorage.setItem('tooltipData', JSON.stringify(tooltipData));
     }
@@ -63,49 +63,47 @@ function App() {
   const targetOptions = ['Button1', 'Button2', 'Button3', 'Button4', 'Button5']
   const positionOptions = ['Bottom', 'Left', 'Right', 'Top']
 
-  const dropdownConfigs = [
-    { label: 'Tooltip Target', name: 'targetElement', options: targetOptions, value: tooltipData.targetElement },
-    { label: 'Tooltip Position', name: 'position', options: positionOptions, value: tooltipData.position }
-  ]
-
   const inputConfigs = [
     { label: 'Tooltip Text', name: 'text', placeholder: 'enter tooltip text here', value: tooltipData.text, size: 'full' },
-    { label: 'Text Size', name: 'textSize', placeholder: 'text size', value: tooltipData.textSize, size: 'half' },
-    { label: 'Padding', name: 'padding', placeholder: 'padding', value: tooltipData.padding, size: 'half' },
+    { label: 'Text Size', sub: '( in px )', name: 'textSize', placeholder: 'text size', value: tooltipData.textSize, size: 'half' },
+    { label: 'Padding', sub: '( in px )', name: 'padding', placeholder: 'padding', value: tooltipData.padding, size: 'half' },
     { label: 'Text Colour', name: 'color', placeholder: 'text colour', value: tooltipData.color, size: 'full' },
     { label: 'Background Colour', name: 'backgroundColor', placeholder: 'background colour', value: tooltipData.backgroundColor, size: 'full' },
-    { label: 'Corner Radius', name: 'borderRadius', placeholder: 'corner radius', value: tooltipData.borderRadius, size: 'half' },
-    { label: 'Tooltip Width', name: 'tooltipWidth', placeholder: 'tooltip width', value: tooltipData.tooltipWidth, size: 'half' },
-    { label: 'Tooltip Height', name: 'tooltipHeight', placeholder: 'tooltip height', value: tooltipData.tooltipHeight, size: 'half' },
-    { label: 'Arrow Width', name: 'arrowWidth', placeholder: 'arrow width', value: tooltipData.arrowWidth, size: 'half' },
-    { label: 'Arrow Height', name: 'arrowHeight', placeholder: 'arrow height', value: tooltipData.arrowHeight, size: 'half' }
+    { label: 'Tooltip Width', sub: '( in rem )', name: 'tooltipWidth', placeholder: 'tooltip width', value: tooltipData.tooltipWidth, size: 'half' },
+    { label: 'Tooltip Height', sub: '( in rem )', name: 'tooltipHeight', placeholder: 'tooltip height', value: tooltipData.tooltipHeight, size: 'half' },
+    { label: 'Arrow Width', sub: '( in px )', name: 'arrowWidth', placeholder: 'arrow width', value: tooltipData.arrowWidth, size: 'half' },
+    { label: 'Arrow Height', sub: '( in px )', name: 'arrowHeight', placeholder: 'arrow height', value: tooltipData.arrowHeight, size: 'half' },
+    { label: 'Corner Radius', sub: '( in px )', name: 'borderRadius', placeholder: 'corner radius', value: tooltipData.borderRadius, size: 'half' }
+
   ]
 
   const imageInputs = [
-    { label: 'Image Width', name: 'imageWidth', placeholder: 'image width', value: tooltipData.imageWidth, size: 'half' },
-    { label: 'Image Height', name: 'imageHeight', placeholder: 'image height', value: tooltipData.imageHeight, size: 'half' },
-    { label: 'Border Radius', name: 'imageBorderRadius', placeholder: 'border radius', value: tooltipData.imageBorderRadius, size: 'half' }
+    { label: 'Image Width', sub: '( in px )', name: 'imageWidth', placeholder: 'image width', value: tooltipData.imageWidth, size: 'half' },
+    { label: 'Image Height', sub: '( in px )', name: 'imageHeight', placeholder: 'image height', value: tooltipData.imageHeight, size: 'half' },
+    { label: 'Border Radius', sub: '( in px )', name: 'imageBorderRadius', placeholder: 'border radius', value: tooltipData.imageBorderRadius, size: 'half' }
   ]
 
   if (loading) {
-    return null; // Or you can show a loading indicator here
+    return null; 
   }
 
   return (
     <div className='App'>
       <form>
-      {dropdownConfigs.map((input, idx) => {
-        return (
-          <DropdownMenu
-            key={idx}
-            name={input.name}
-            label={input.label}
-            options={input.options}
-            value={input.value}
-            onSelect={handleTooltipChange}    // common for all
+      <DropdownMenu
+            name='targetElement'
+            label='Target Element'
+            options={targetOptions}
+            value={tooltipData.targetElement}
+            onSelect={handleTooltipChange}    
           />
-        )
-      })}
+
+      <RadioButton
+        name='position'
+        options={positionOptions}
+        value={tooltipData.position}
+        onSelect={handleTooltipChange}
+      />
 
       {inputConfigs.map((input, idx) => {
         return (
@@ -113,16 +111,23 @@ function App() {
             key={idx}
             name={input.name}
             label={input.label}
+            sub={input.sub}
             placeholder={input.placeholder}
             value={input.value}
             size={input.size}
-            onChange={handleTooltipChange}    // common for all
+            onChange={handleTooltipChange}   
           />
         )
       })}
-
-      <label>Insert Image in Tooltip</label>
-      <input type="file" onChange={(e) => handleTooltipChange('image', e.target.files[0])} />
+      
+      <label className='image-input-wrapper'>
+        <span className='image-input-label'>Insert Image in Tooltip</span>
+        <input
+          className='image-input'
+          type='file'
+          onChange={(e) => handleTooltipChange('image', e.target.files[0])}
+        />
+      </label>
 
       {tooltipData.image && (
         imageInputs.map((input, idx) => (
@@ -130,10 +135,11 @@ function App() {
             key={idx}
             name={input.name}
             label={input.label}
+            sub={input.sub}
             placeholder={input.placeholder}
             value={input.value}
             size={input.size}
-            onChange={handleTooltipChange} // common for all
+            onChange={handleTooltipChange}
           />
         ))
       )}

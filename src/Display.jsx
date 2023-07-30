@@ -22,7 +22,6 @@ const Display = ({ data }) => {
 
     useEffect(() => {
       if (image instanceof Blob) {
-        // Convert the image to a Base64-encoded data URL
         const reader = new FileReader();
         reader.onloadend = () => {
           setImageSrc(reader.result);

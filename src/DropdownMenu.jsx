@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import './DropdownMenu.css' // Create this CSS file to style the dropdown menu
+import './DropdownMenu.css' 
+import dropdownIcon from './assets/dropdown-arrow.png'
 
-const DropdownMenu = ({name, options, value, onSelect }) => {
+const DropdownMenu = ({name, label, options, value, onSelect }) => {
 
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState(null)
 
   useEffect(() => {
-    setSelectedOption(value);
+    setSelectedOption(value)
   }, [])
 
   const toggleDropdown = () => {
@@ -22,8 +23,10 @@ const DropdownMenu = ({name, options, value, onSelect }) => {
 
   return (
     <div className="dropdown-menu">
+      <label>{label}</label>
       <div className="dropdown-trigger" onClick={toggleDropdown}>
         {selectedOption || 'Select an option'}
+        <img className='dropdown-icon' src={dropdownIcon} alt='dropdown-icon' />
       </div>
       {isOpen && (
         <ul className="dropdown-list">

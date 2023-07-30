@@ -12,6 +12,7 @@
 
 ## Description
 Tooltip Generator is a frontend application built using React.js that renders interactive tooltips with dynamic positioning, style, and text. The app allows users to set the target element, position (top/right/bottom/left), style, and text of the tooltip. It provides a real-time preview of a mobile screen with button elements, and each button acts as a target element for the tooltip. The tooltip component is custom-built and positioned without using any additional libraries.
+
 The app also offers a bonus feature where users can include an image inside the tooltip, providing additional customization options. Furthermore, the data used to build the tooltips is persistent, ensuring that the user's preferences are saved even after refreshing the page or revisiting the app.
 
 ## Demo

@@ -1,0 +1,156 @@
+.Display {
+    /* display: flex; */
+    width: fit-content;
+    border: 1px solid;
+}
+
+.mobile-screen {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    margin: 1rem;
+    height: 25rem;
+    width: 15rem;
+    overflow: hidden;
+    border: 1px solid red;
+}
+
+.mobile-screen .buttons {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    place-items: center;
+    height: 1.5rem;
+    width: 4rem;
+    margin: 1rem;
+}
+
+.mobile-screen .buttons.center {
+    margin-left: 50%;
+    transform: translateX(-2rem);
+    border: 1px solid red;
+}
+
+.tooltip {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    position: absolute;
+    text-align: center;
+    z-index: 2;
+    word-wrap: break-word;
+    border: 1px solid;
+}
+
+.tooltip[button='Button3'][position='Bottom'] {
+    top: 2rem;
+}
+
+.tooltip[button='Button3'][position='Left'] {
+    right: 4.5rem;
+}
+
+.tooltip[button='Button3'][position='Right'] {
+    left: 4.5rem;
+}
+
+.tooltip[button='Button3'][position='Top'] {
+    bottom: 2rem;
+}
+
+.tooltip[button='Button1'][position='Left'],
+.tooltip[button='Button1'][position='Right'] {
+    top: 0;
+    left: 4.5rem;
+    /* margin-left: 5px; */
+}
+
+.tooltip[button='Button4'][position='Left'],
+.tooltip[button='Button4'][position='Right'] {
+    bottom: 0;
+    left: 4.5rem;
+    margin-left: 5px;
+}
+
+.tooltip[button='Button2'][position='Left'],
+.tooltip[button='Button2'][position='Right'] {
+    top: 0;
+    right: 4.5rem;
+    margin-right: 5px;
+}
+
+.tooltip[button='Button5'][position='Left'],
+.tooltip[button='Button5'][position='Right'] {
+    bottom: 0;
+    right: 4.5rem;
+    margin-right: 5px;
+}
+
+.tooltip[button='Button1'][position='Top'],
+.tooltip[button='Button1'][position='Bottom'] {
+    top: 2rem;
+    left: 0;
+}
+
+.tooltip[button='Button2'][position='Top'],
+.tooltip[button='Button2'][position='Bottom'] {
+    top: 2rem;
+    right: 0;
+}
+
+.tooltip[button='Button4'][position='Top'],
+.tooltip[button='Button4'][position='Bottom'] {
+    left: 0;
+    bottom: 2rem;
+}
+
+.tooltip[button='Button5'][position='Top'],
+.tooltip[button='Button5'][position='Bottom'] {
+    right: 0;
+    bottom: 2rem;
+}
+
+.tooltip-arrow {
+    /* Arrow styles */
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: calc(var(--arrow-width) / 2) solid transparent;
+    border-right: calc(var(--arrow-width) / 2) solid transparent;
+    /* Use the CSS variable for arrow direction */
+    border-bottom: var(--arrow-height) solid var(--arrow-background);
+    /* Arrow color */
+    /* Use the CSS variable for arrow direction */
+    border-top: var(--arrow-height) solid transparent;
+    /* border-color: var(--arrow-background); */
+    /* border-color: black; */
+}
+
+/* Adjust arrow direction based on the CSS variable */
+.tooltip[arrowDirection='Top'] .tooltip-arrow {
+    border-top: var(--arrow-height) solid transparent; /* Arrow color */
+    border-bottom: var(--arrow-height) solid var(--arrow-background);
+    bottom: 100%;
+  }
+  
+  .tooltip[arrowDirection='Bottom'] .tooltip-arrow {
+    border-bottom: var(--arrow-height) solid transparent; /* Arrow color */
+    border-top: var(--arrow-height) solid var(--arrow-background);
+    top: 100%;
+  }
+  
+  .tooltip[arrowDirection='Left'] .tooltip-arrow {
+    /* border-left: var(--arrow-width) solid transparent; */
+    border-bottom: var(--arrow-width) solid transparent;
+    border-right: var(--arrow-width) solid var(--arrow-background);
+    right: 100%;
+  }
+  
+  .tooltip[arrowDirection='Right'] .tooltip-arrow {
+    border-left: var(--arrow-width) solid var(--arrow-background);
+    border-bottom: var(--arrow-width) solid transparent;
+    left: 100%;
+  }

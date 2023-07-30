@@ -1,0 +1,18 @@
+
+.App {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: fit-content;
+    gap: 2rem;
+    padding: 2rem;
+    border: 1px solid;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 35rem;
+    gap: 1rem;
+    border: 1px solid;
+}

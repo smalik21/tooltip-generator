@@ -45,8 +45,3 @@ The following are some potential future enhancements for the Tooltip App:
 - Allow users to customize the tooltip arrow's shape and color.
 - Implement internationalization (i18n) for multi-language support.
 - Provide options for users to share their tooltip designs on social media.
-
-## Contact
-If you have any questions or suggestions about the Tooltip Generator, feel free to contact:
-Sahil Malik 
-malik.sahil201@gmail.com

@@ -1,4 +1,4 @@
-# tooltip-generator
+# Tooltip Generator
 
 ## Table of Contents
 - Description
